@@ -1,44 +1,55 @@
-usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
-           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
-           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
-           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
-           [--config-env=<name>=<envvar>] <command> [<args>]
+# Aplikasi Kasir Sederhana
+Program kasir ini dirancang untuk mempermudah proses transaksi penjualan di toko dengan menyediakan dua jenis akun: admin dan kasir. Akun admin digunakan untuk mengelola data barang, sedangkan akun kasir digunakan untuk melakukan transaksi penjualan.
 
-These are common Git commands used in various situations:
 
-start a working area (see also: git help tutorial)
-   clone     Clone a repository into a new directory
-   init      Create an empty Git repository or reinitialize an existing one
+## Instalasi:
+1. Unduh dan pasang JDK
+2. Clone repositori dari GitHub ini
+3. Buka proyek di IDE pilihan Anda
+4. Import file penjualan.sql ke database lokal (localhost). Pastikan database server sudah berjalan dan Anda memiliki hak akses yang diperlukan.
+5. Pada file strukPDF.java, sesuaikan file path untuk menyimpan bukti transaksi sesuai dengan lokasi yang diinginkan di sistem Anda.
+6. Jalankan `login_page.java` dari IDE.
 
-work on the current change (see also: git help everyday)
-   add       Add file contents to the index
-   mv        Move or rename a file, a directory, or a symlink
-   restore   Restore working tree files
-   rm        Remove files from the working tree and from the index
 
-examine the history and state (see also: git help revisions)
-   bisect    Use binary search to find the commit that introduced a bug
-   diff      Show changes between commits, commit and working tree, etc
-   grep      Print lines matching a pattern
-   log       Show commit logs
-   show      Show various types of objects
-   status    Show the working tree status
+## Cara Menjalankan Program
 
-grow, mark and tweak your common history
-   branch    List, create, or delete branches
-   commit    Record changes to the repository
-   merge     Join two or more development histories together
-   rebase    Reapply commits on top of another base tip
-   reset     Reset current HEAD to the specified state
-   switch    Switch branches
-   tag       Create, list, delete or verify a tag object signed with GPG
+### 1. Login
 
-collaborate (see also: git help workflows)
-   fetch     Download objects and refs from another repository
-   pull      Fetch from and integrate with another repository or a local branch
-   push      Update remote refs along with associated objects
+Untuk memulai, jalankan file `login_page.java`. Terdapat dua jenis akun yang dapat digunakan untuk login:
 
-'git help -a' and 'git help -g' list available subcommands and some
-concept guides. See 'git help <command>' or 'git help <concept>'
-to read about a specific subcommand or concept.
-See 'git help git' for an overview of the system.
+- **Akun Admin:**
+  - Username: `admin1`
+  - Password: `admin123`
+  
+- **Akun Cashier:**
+  - Username: `cashier1`
+  - Password: `cashier123`
+
+### 2. Halaman Setelah Login
+
+Berdasarkan jenis akun yang digunakan, pengguna akan diarahkan ke halaman yang berbeda:
+
+#### Akun Admin
+
+Setelah login sebagai admin, pengguna akan diarahkan ke `admin.java`. Di sini, admin dapat mengelola keseluruhan data barang untuk transaksi, termasuk:
+
+- **Menambah Barang:** Admin dapat menambahkan barang baru dengan mengisi form yang tersedia.
+- **Mengedit Barang:** Admin dapat mengubah detail barang yang sudah ada.
+- **Menghapus Barang:** Admin dapat menghapus barang dari daftar.
+
+#### Akun Cashier
+
+Setelah login sebagai kasir, pengguna akan diarahkan ke `Penjualan.java`. Halaman ini digunakan untuk melakukan transaksi penjualan dengan fitur-fitur berikut:
+
+- **Memasukkan Data Customer:** Mengambil ID dan nama customer.
+- **Mencari dan Menambah Barang:** Mencari barang yang dipilih customer berdasarkan ketersediaan di data admin dan menambahkannya ke transaksi.
+- **Menghapus Barang dari Transaksi:** Jika diperlukan, kasir dapat menghapus barang dari detail transaksi.
+- **Memasukkan Pembayaran:** User memasukkan jumlah pembayaran. Jika jumlahnya kurang, akan muncul notifikasi bahwa uang tidak cukup.
+- **Menampilkan Kembalian:** Setelah pembayaran, sistem akan menampilkan kembalian.
+- **Mencetak Struk:** Tombol "Cetak" berfungsi untuk menyimpan transaksi dan mencetak struk, yang otomatis disimpan di file path yang telah ditentukan.
+
+### 3. Logout
+
+Di `admin.java` dan `Penjualan.java`, terdapat ikon logout yang berfungsi untuk mengembalikan halaman ke halaman login.
+
+           
